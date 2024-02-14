@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carrito de Compras</title>
+  <style>
+    /* Estilos CSS */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    ul {
+      margin-top: 20px;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    li {
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Carrito de Compras</h1>
+    <input type="text" id="itemInput" placeholder="Escribe lo que quieres comprar">
+    <button id="addItemBtn">Añadir</button>
+    <ul id="itemList"></ul>
+  </div>
+
+  <script>
+    // Javascript
+    var addItemBtn = document.getElementById('addItemBtn');
+    addItemBtn.addEventListener('click', function() {
+      var itemInput = document.getElementById('itemInput');
+      var itemValue = itemInput.value;
+
+      if (itemValue !== '') {
+        var itemList = document.getElementById('itemList');
+        var listItem = document.createElement('li');
+        listItem.textContent = itemValue;
+        itemList.appendChild(listItem);
+        itemInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
