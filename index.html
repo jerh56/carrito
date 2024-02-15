@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <title>Carrito de Compras v2</title>
+  <title>Carrito de Compras</title>
   <style>
     /* Estilos CSS */
     body {
@@ -51,17 +50,31 @@
     }
 
     li {
+      position: relative;
       padding: 10px;
       background-color: #f9f9f9;
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-bottom: 10px;
     }
+
+    .delete-btn {
+      position: absolute;
+      top: 0%;
+      right: 5px;
+      transform: translateY(80%);
+      transform: translateX(50%);
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      color: red;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Carrito de Compras (ejemplo) v3</h1>
+    <h1>Carrito de Compras  (V4)</h1>
     <input type="text" id="itemInput" placeholder="Escribe lo que quieres comprar">
     <button id="addItemBtn">Añadir</button>
     <ul id="itemList"></ul>
@@ -70,7 +83,16 @@
   <script>
     // Javascript
     var addItemBtn = document.getElementById('addItemBtn');
-    addItemBtn.addEventListener('click', function() {
+    addItemBtn.addEventListener('click', addItem)
+    addItemBtn.addEventListener('click', addItem);
+    itemInput.addEventListener('keypress', function(event) {
+      if (event.keyCode === 13) {
+        addItem();
+      }
+    });
+   
+   
+    function addItem() { 
       var itemInput = document.getElementById('itemInput');
       var itemValue = itemInput.value;
 
@@ -78,10 +100,19 @@
         var itemList = document.getElementById('itemList');
         var listItem = document.createElement('li');
         listItem.textContent = itemValue;
+        
+        var deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'x';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.addEventListener('click', function() {
+          itemList.removeChild(listItem);
+        });
+        
+        listItem.appendChild(deleteBtn);
         itemList.appendChild(listItem);
         itemInput.value = '';
       }
-    });
+    };
   </script>
 </body>
 </html>
